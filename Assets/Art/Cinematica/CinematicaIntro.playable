@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: 'Fin '
   m_EditorClassIdentifier: Unity.Timeline::UnityEngine.Timeline.SignalEmitter
-  m_Time: 28.966666666666665
+  m_Time: 30.666666666666668
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 25fd1cfe8f76e854995be20ed0a3656e, type: 2}
@@ -133,7 +133,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -7665420097870134824}
-    m_Duration: 28.966666666666665
+    m_Duration: 30.666666666666668
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7532858033655112039}
     m_EaseInDuration: 0
@@ -235,8 +235,6 @@ AnimationClip:
       value: {fileID: 3584848598867064273, guid: 9dbc180caf3161c4e8077b97c22d0467, type: 3}
     - time: 27.883333
       value: {fileID: -3802324548943606499, guid: 91fb45f78f7a7a441a2bd94a4113a6f7, type: 3}
-    - time: 28.333334
-      value: {fileID: -7757018737276224997, guid: 1ac8b1dfb354e9f4bbdd16616c4bb3a1, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -267,13 +265,12 @@ AnimationClip:
     - {fileID: 2260524257481403338, guid: 712eab4b2d09ae540a62cafd87e99c22, type: 3}
     - {fileID: 3584848598867064273, guid: 9dbc180caf3161c4e8077b97c22d0467, type: 3}
     - {fileID: -3802324548943606499, guid: 91fb45f78f7a7a441a2bd94a4113a6f7, type: 3}
-    - {fileID: -7757018737276224997, guid: 1ac8b1dfb354e9f4bbdd16616c4bb3a1, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 28.35
+    m_StopTime: 27.9
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
