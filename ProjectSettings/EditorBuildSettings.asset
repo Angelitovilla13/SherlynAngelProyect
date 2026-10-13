@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity
     guid: 7369bd4a6d7177940afd5a37bad7a2a6
+  - enabled: 1
+    path: Assets/Scenes/cocina.unity
+    guid: 8e6b9e9484d5ca041b89f8f8d068412c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
