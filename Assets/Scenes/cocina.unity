@@ -744,7 +744,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476cd6d5f9afc7b48b29478875d388fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  horizontalSpeed: 7
+  horizontalSpeed: 8
   verticalSpeed: 3
   depthScale: {fileID: 1808640687}
   minHorizontalMultiplier: 0.3
