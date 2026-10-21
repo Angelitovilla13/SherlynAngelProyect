@@ -2,71 +2,67 @@ using UnityEngine;
 
 public class ChestInteraction : MonoBehaviour
 {
-    [Header("Referencias visuales (cercanía)")]
-    [SerializeField] private GameObject chestOutline;
-    [SerializeField] private GameObject promptE;
+    [Header("Referencias del Borde")]
+    public LineRenderer lineRenderer;
 
-    [Header("Vista interior")]
-    [SerializeField] private GameObject insideViewCanvas;
-    [SerializeField] private PlayerMovement player;
+    [Header("Vista Interior del Cofre")]
+    public GameObject insideViewCanvas; // <--- AQUÍ está la casilla para la imagen
+    public Transform player;             // <--- AQUÍ está la casilla para el Player
 
-    private bool isPlayerNear = false;
-    private bool isInsideViewOpen = false;
+    private bool cercaDelCofre = false;
 
-    private void Awake()
+    private void Start()
     {
-        if (chestOutline != null) chestOutline.SetActive(false);
-        if (promptE != null) promptE.SetActive(false);
+        // Genera el borde automáticamente al iniciar el juego
+        ActualizarBorde();
         if (insideViewCanvas != null) insideViewCanvas.SetActive(false);
     }
 
-    private void Update()
+    public void ActualizarBorde()
     {
-        bool pressedE = Input.GetKeyDown(KeyCode.E);
-        bool pressedEscape = Input.GetKeyDown(KeyCode.Escape);
-
-        if (!isInsideViewOpen && isPlayerNear && pressedE)
+        PolygonCollider2D poly = GetComponent<PolygonCollider2D>();
+        if (poly != null && lineRenderer != null)
         {
-            OpenInsideView();
+            Vector2[] puntos = poly.points;
+            lineRenderer.useWorldSpace = false;
+            lineRenderer.positionCount = puntos.Length + 1;
+
+            for (int i = 0; i < puntos.Length; i++)
+            {
+                lineRenderer.SetPosition(i, puntos[i] + poly.offset);
+            }
+            lineRenderer.SetPosition(puntos.Length, puntos[0] + poly.offset);
         }
-        else if (isInsideViewOpen && (pressedE || pressedEscape))
-        {
-            CloseInsideView();
-        }
-    }
-
-    private void OpenInsideView()
-    {
-        isInsideViewOpen = true;
-        insideViewCanvas.SetActive(true);
-        player.FreezeMovement();
-
-        // Ocultamos el aviso de "Presiona E" mientras está abierto, para no confundir
-        if (promptE != null) promptE.SetActive(false);
-    }
-
-    private void CloseInsideView()
-    {
-        isInsideViewOpen = false;
-        insideViewCanvas.SetActive(false);
-        player.UnfreezeMovement();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
-
-        isPlayerNear = true;
-        if (chestOutline != null) chestOutline.SetActive(true);
-        if (promptE != null) promptE.SetActive(true);
+        if (other.CompareTag("Player"))
+        {
+            cercaDelCofre = true;
+            if (lineRenderer != null) lineRenderer.enabled = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (other.CompareTag("Player"))
+        {
+            cercaDelCofre = false;
+            if (lineRenderer != null) lineRenderer.enabled = false;
+            if (insideViewCanvas != null) insideViewCanvas.SetActive(false);
+        }
+    }
 
-        isPlayerNear = false;
-        if (chestOutline != null) chestOutline.SetActive(false);
-        if (promptE != null) promptE.SetActive(false);
+    private void Update()
+    {
+        if (cercaDelCofre && Input.GetKeyDown(KeyCode.E))
+        {
+            if (insideViewCanvas != null)
+            {
+                // Abre o cierra la imagen del cofre al presionar la E
+                insideViewCanvas.SetActive(!insideViewCanvas.activeSelf);
+            }
+        }
     }
 }
