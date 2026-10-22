@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Escena1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/Cuartohermana.unity
+    guid: 09da7a0e80b4f08499bffb93e13130f1
+  - enabled: 1
     path: Assets/Scenes/sala.unity
     guid: 96d85e3363be39346ac8a507d8203147
   - enabled: 1
